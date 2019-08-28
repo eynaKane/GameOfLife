@@ -3,7 +3,7 @@ load 'cell.rb'
 
 # Maps the cells that are alive and dead
 class Board
-  attr_reader :board, :live_cells
+  attr_accessor :board, :live_cells
 
   def initialize(live_cells)
     @live_cells = live_cells
@@ -18,8 +18,8 @@ class Board
     temp_live_cells = find_cells_to_keep_alive
     temp_live_cells += find_cells_to_resurrect
 
-    live_cells = temp_live_cells
-    # puts "NEW GENERATION: #{live_cells.sort}"
+    @live_cells = temp_live_cells.sort
+    puts "NEW GENERATION: #{live_cells}"
 
     live_cells
   end
